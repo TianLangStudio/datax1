@@ -1,0 +1,13 @@
+--20170807
+ftpreader 增加have_read_file 配置用于记录已经读取的文件　不重复读
+--20170810
+ftpreader 增加read_file_num 用于限制一次读取的未读过的文件数量
+--20170815
+添加　job.interval 参数　用于长期重复执行任务
+python bin/datax.py -p "-Djob.interval=10" ../jobs/sample/FtpReader2StreamWriter.xml
+
+--20170817
+优化ftpreader 减少不必要的haveReadFile文件读取　
+
+--20170823
+ftpreader 添加自动创建haveReadFile文件支持　

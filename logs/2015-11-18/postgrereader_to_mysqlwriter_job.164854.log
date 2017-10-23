@@ -1,0 +1,107 @@
+2015-11-18 16:48:54,074 [main] INFO  schedule.Engine - 
+DataX engine [version=1] storage[com.taobao.datax.engine.storage.RAMStorage size 3000/1000000 buffer 50] pluginpath[d:\\work\\datax\\plugins\\]
+
+2015-11-18 16:48:54,082 [main] INFO  schedule.Engine - 
+
+job:postgrereader_to_mysqlwriter_job
+Reader conf:
+name:postgrereader id virgin-reader, pool(1) destruct(0)
+params:
+	                   tables=[dw_mbr_userinfo_20150607,dw_mbr_userinfo_20150608,dw_mbr_userinfo_20150609]
+	                     port=[5500                          ]
+	                   schema=[b2o_push                      ]
+	                 username=[b2o_push                      ]
+	                   dbname=[b2o                           ]
+	              concurrency=[1                             ]
+	                 encoding=[UTF-8                         ]
+	                  columns=[*                             ]
+	                    where=[1=1                           ]
+	                 password=[********                      ]
+	                       ip=[192.168.41.225                ]
+
+Writer conf [num 1]:
+name:mysqlwriter id virgin-writer, pool(3) destruct(0)
+params:
+	                  replace=[false                         ]
+	                    limit=[0                             ]
+	                     port=[3306                          ]
+	                 username=[root                          ]
+	                      pre=[truncate table dw_mbr_userinfo_20151114]
+	                   dbname=[teamtoy                       ]
+	              concurrency=[3                             ]
+	                 encoding=[UTF-8                         ]
+	                    table=[dw_mbr_userinfo_20151114      ]
+	                 password=[****                          ]
+	                       ip=[192.168.41.225                ]
+
+2015-11-18 16:48:54,082 [main] INFO  schedule.Engine - DataX startups .
+2015-11-18 16:48:54,085 [main] INFO  schedule.Engine - DataX Reader postgrereader try to load path d:\\work\\datax\\plugins\\reader/postgrereader .
+2015-11-18 16:48:54,092 [main] INFO  schedule.Engine - DataX Reader prepare work begins .
+2015-11-18 16:48:54,100 [main] INFO  postgrereader.PostgreReader - PostgreReader try connection: jdbc:postgresql://192.168.41.225:5500/b2o .
+2015-11-18 16:48:54,277 [main] INFO  common.DBSource - Key [239992a6473ff96b] register database pool successfully .
+2015-11-18 16:48:54,280 [main] INFO  common.DBSource - Key [239992a6473ff96b] connect to database pool successfully .
+2015-11-18 16:48:54,280 [main] INFO  postgrereader.PostgreReader - set postgre connection autocommit false
+2015-11-18 16:48:54,280 [main] INFO  schedule.Engine - DataX Reader prepare work ends .
+2015-11-18 16:48:54,280 [main] INFO  schedule.Engine - DataX Reader split work begins .
+2015-11-18 16:48:54,280 [main] INFO  postgrereader.PostgreReader - PostgreReader start split mechanism .
+2015-11-18 16:48:54,281 [main] INFO  postgrereader.PostgreReaderTableSplitter - PostgreReaderTableSplitter initialize begins .
+2015-11-18 16:48:54,281 [main] INFO  postgrereader.PostgreReaderTableSplitter - split table size:3
+2015-11-18 16:48:54,282 [main] INFO  postgrereader.PostgreReader - PostgreReader genMetaData.
+2015-11-18 16:48:54,305 [main] INFO  postgrereader.PostgreReader - PostgreReader setMetaData.
+2015-11-18 16:48:54,305 [main] INFO  schedule.Engine - DataX Reader splits this job into 3 sub-jobs
+2015-11-18 16:48:54,305 [main] INFO  schedule.Engine - DataX Reader split work ends .
+2015-11-18 16:48:54,308 [main] INFO  schedule.Engine - DataX Reader starts to read data .
+2015-11-18 16:48:54,310 [main] INFO  schedule.Engine - DataX Writer mysqlwriter try to load path d:\\work\\datax\\plugins\\writer/mysqlwriter .
+2015-11-18 16:48:54,319 [pool-1-thread-1] INFO  common.DBSource - Key [239992a6473ff96b] connect to database pool successfully .
+2015-11-18 16:48:54,319 [pool-1-thread-1] INFO  postgrereader.PostgreReader - PostgreReader start to query select * from b2o_push.dw_mbr_userinfo_20150607 a where 1=1 .
+2015-11-18 16:48:54,320 [pool-1-thread-1] INFO  postgrereader.PostgreReader - set postgre statement fetch size
+2015-11-18 16:48:54,320 [pool-1-thread-1] INFO  postgrereader.PostgreReader - connection info autoCommit:false fetchSize1000
+2015-11-18 16:48:54,331 [main] INFO  schedule.Engine - DataX Writer prepare work begins .
+2015-11-18 16:48:54,331 [main] INFO  common.DBSource - Key [b1e907136297ba56] register database pool successfully .
+2015-11-18 16:48:54,340 [pool-1-thread-1] INFO  postgrereader.PostgreReader - get a ResultSet
+2015-11-18 16:48:54,427 [pool-1-thread-1] INFO  postgrereader.PostgreReader - send to writer
+2015-11-18 16:48:54,670 [main] INFO  common.DBSource - Key [b1e907136297ba56] connect to database pool successfully .
+2015-11-18 16:48:54,670 [main] INFO  mysqlwriter.MysqlWriter - Excute prepare sql truncate table dw_mbr_userinfo_20151114 .
+2015-11-18 16:48:54,671 [pool-1-thread-1] INFO  common.DBSource - Key [239992a6473ff96b] connect to database pool successfully .
+2015-11-18 16:48:54,671 [pool-1-thread-1] INFO  postgrereader.PostgreReader - PostgreReader start to query select * from b2o_push.dw_mbr_userinfo_20150608 a where 1=1 .
+2015-11-18 16:48:54,671 [pool-1-thread-1] INFO  postgrereader.PostgreReader - set postgre statement fetch size
+2015-11-18 16:48:54,671 [pool-1-thread-1] INFO  postgrereader.PostgreReader - connection info autoCommit:false fetchSize1000
+2015-11-18 16:48:54,675 [pool-1-thread-1] INFO  postgrereader.PostgreReader - get a ResultSet
+2015-11-18 16:48:54,688 [main] INFO  schedule.Engine - DataX Writer prepare work ends .
+2015-11-18 16:48:54,688 [main] INFO  schedule.Engine - DataX Writer split work begins .
+2015-11-18 16:48:54,688 [main] INFO  schedule.Engine - DataX Writer splits this job into 1 sub-jobs .
+2015-11-18 16:48:54,688 [main] INFO  schedule.Engine - DataX Writer split work ends .
+2015-11-18 16:48:54,689 [main] INFO  schedule.Engine - DataX Writer starts to write data .
+2015-11-18 16:48:54,689 [main] INFO  schedule.Engine - DataX starts to exchange data .
+2015-11-18 16:48:54,706 [pool-1-thread-1] INFO  postgrereader.PostgreReader - send to writer
+2015-11-18 16:48:54,714 [pool-1-thread-1] INFO  common.DBSource - Key [239992a6473ff96b] connect to database pool successfully .
+2015-11-18 16:48:54,714 [pool-1-thread-1] INFO  postgrereader.PostgreReader - PostgreReader start to query select * from b2o_push.dw_mbr_userinfo_20150609 a where 1=1 .
+2015-11-18 16:48:54,714 [pool-1-thread-1] INFO  postgrereader.PostgreReader - set postgre statement fetch size
+2015-11-18 16:48:54,714 [pool-1-thread-1] INFO  postgrereader.PostgreReader - connection info autoCommit:false fetchSize1000
+2015-11-18 16:48:54,716 [pool-1-thread-1] INFO  postgrereader.PostgreReader - get a ResultSet
+2015-11-18 16:48:54,728 [pool-1-thread-1] INFO  postgrereader.PostgreReader - send to writer
+2015-11-18 16:48:54,823 [pool-2-thread-1] INFO  common.DBSource - Key [b1e907136297ba56] connect to database pool successfully .
+2015-11-18 16:48:54,823 [pool-2-thread-1] INFO  mysqlwriter.MysqlWriter - Config max_error_count: set max_error_count=65535
+2015-11-18 16:48:54,826 [pool-2-thread-1] INFO  mysqlwriter.MysqlWriter - Config encoding UTF8 .
+2015-11-18 16:48:54,826 [pool-2-thread-1] INFO  mysqlwriter.MysqlWriter - SET character_set_client=UTF8; 
+2015-11-18 16:48:54,826 [pool-2-thread-1] INFO  mysqlwriter.MysqlWriter - SET character_set_connection=UTF8; 
+2015-11-18 16:48:54,826 [pool-2-thread-1] INFO  mysqlwriter.MysqlWriter - SET character_set_database=UTF8; 
+2015-11-18 16:48:54,826 [pool-2-thread-1] INFO  mysqlwriter.MysqlWriter - SET character_set_results=UTF8; 
+2015-11-18 16:48:54,826 [pool-2-thread-1] INFO  mysqlwriter.MysqlWriter - SET character_set_server=UTF8; 
+2015-11-18 16:48:54,833 [pool-2-thread-1] INFO  mysqlwriter.MysqlWriter - Load sql: LOAD DATA LOCAL INFILE '`bazhen.csy.hedgehog`' IGNORE INTO TABLE `dw_mbr_userinfo_20151114` CHARACTER SET UTF8 FIELDS TERMINATED BY '' ESCAPED BY '\\'  LINES TERMINATED BY '' ;.
+2015-11-18 16:48:55,702 [pool-2-thread-1] INFO  mysqlwriter.MysqlWriter - DataX write to mysql ends .
+2015-11-18 16:48:56,689 [main] INFO  schedule.Engine - DataX Reader post work begins .
+2015-11-18 16:48:56,689 [main] INFO  schedule.Engine - DataX Reader post work ends .
+2015-11-18 16:48:56,689 [main] INFO  schedule.Engine - DataX Writers post work begins .
+2015-11-18 16:48:56,689 [main] INFO  schedule.Engine - DataX Writers post work ends .
+2015-11-18 16:48:56,689 [main] INFO  schedule.Engine - DataX job succeed .
+2015-11-18 16:48:56,690 [main] INFO  schedule.Engine - 
+DataX starts work at      : 2015-11-18 16:48:54
+DataX ends work at        : 2015-11-18 16:48:56
+Total time costs          :                  2s
+Average byte speed        :              31KB/s
+Average line speed        :              213L/s
+Total transferred records :                 426
+Total discarded records   :                   0
+
+2015-11-18 16:49:01,759 [main] INFO  schedule.Reporter - Report DataX statistic failed, connect timed out

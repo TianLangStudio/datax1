@@ -1,0 +1,66 @@
+2017-08-03 22:59:23,753 [main] INFO  schedule.Engine - 
+DataX engine [version=1] storage[com.taobao.datax.engine.storage.RAMStorage size 3000/1000000 buffer 50] pluginpath[d:\\work\\datax\\plugins\\]
+
+2017-08-03 22:59:23,762 [main] INFO  schedule.Engine - 
+
+job:MysqlReader_to_HdfsWriter_job
+Reader conf:
+name:mysqlreader id virgin-reader, pool(1) destruct(0)
+params:
+	                 password=[*                             ]
+	                   tables=[?                             ]
+	                   dbname=[?                             ]
+	                     port=[3306                          ]
+	             mysql.params=[?                             ]
+	                  columns=[*                             ]
+	                       ip=[?                             ]
+	                    where=[?                             ]
+	                 encoding=[UTF-8                         ]
+	                 username=[?                             ]
+	                      sql=[?                             ]
+	              concurrency=[1                             ]
+
+Writer conf [num 1]:
+name:hdfswriter id virgin-writer, pool(1) destruct(0)
+params:
+	         partition_values=[?                             ]
+	              field_split=[\t                            ]
+	            hiveserver_ip=[?                             ]
+	               line_split=[\n                            ]
+	         compression_type=[NONE                          ]
+	              buffer_size=[4096                          ]
+	         hivetable_switch=[false                         ]
+	              hadoop_conf=[?                             ]
+	              codec_class=[org.apache.hadoop.io.compress.DefaultCodec]
+	                      dir=[?                             ]
+	                 encoding=[UTF-8                         ]
+	               table_name=[?                             ]
+	              concurrency=[1                             ]
+	          hiveserver_port=[10000                         ]
+	                 del_mode=[3                             ]
+	              value_class=[org.apache.hadoop.io.Text     ]
+	                file_type=[TXT                           ]
+	          key_field_index=[0                             ]
+	           hadoop.job.ugi=[?                             ]
+	          prefix_filename=[part                          ]
+	                 nullchar=[?                             ]
+	                key_class=[org.apache.hadoop.io.Text     ]
+	          partition_names=[?                             ]
+	                split_num=[1                             ]
+
+2017-08-03 22:59:23,762 [main] INFO  schedule.Engine - DataX startups .
+2017-08-03 22:59:23,762 [main] INFO  schedule.Engine - reader plugin:mysqlreader
+2017-08-03 22:59:23,766 [main] INFO  schedule.Engine - pluginName:mysqlreader
+2017-08-03 22:59:23,766 [main] INFO  schedule.Engine - replace hdfs reader to hive reader check
+2017-08-03 22:59:23,766 [main] INFO  schedule.Engine - path:d:\\work\\datax\\plugins\\reader/mysqlreader
+2017-08-03 22:59:23,766 [main] INFO  schedule.Engine - DataX Reader mysqlreader try to load path d:\\work\\datax\\plugins\\reader/mysqlreader .
+2017-08-03 22:59:23,767 [main] ERROR schedule.Engine - java.lang.IllegalArgumentException: Path must be directory .
+	at com.taobao.datax.engine.schedule.JarLoader.getUrl(JarLoader.java:59)
+	at com.taobao.datax.engine.schedule.JarLoader.getUrls(JarLoader.java:45)
+	at com.taobao.datax.engine.schedule.JarLoader.<init>(JarLoader.java:35)
+	at com.taobao.datax.engine.schedule.JarLoader.<init>(JarLoader.java:31)
+	at com.taobao.datax.engine.schedule.Engine.getJarLoader(Engine.java:488)
+	at com.taobao.datax.engine.schedule.Engine.initReaderPool(Engine.java:291)
+	at com.taobao.datax.engine.schedule.Engine.start(Engine.java:95)
+	at com.taobao.datax.engine.schedule.Engine.main(Engine.java:477)
+

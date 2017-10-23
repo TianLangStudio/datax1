@@ -1,0 +1,59 @@
+2015-11-18 16:43:46,573 [main] INFO  schedule.Engine - 
+DataX engine [version=1] storage[com.taobao.datax.engine.storage.RAMStorage size 3000/1000000 buffer 50] pluginpath[d:\\work\\datax\\plugins\\]
+
+2015-11-18 16:43:46,578 [main] INFO  schedule.Engine - 
+
+job:postgrereader_to_oraclewriter_job
+Reader conf:
+name:postgrereader id virgin-reader, pool(1) destruct(0)
+params:
+	                   tables=[dw_mbr_userinfo_20150603      ]
+	                     port=[5500                          ]
+	                   schema=[b2o_push                      ]
+	                 username=[b2o_push                      ]
+	                   dbname=[b2o                           ]
+	              concurrency=[1                             ]
+	                 encoding=[UTF-8                         ]
+	                  columns=[*                             ]
+	                    where=[1=1                           ]
+	                 password=[********                      ]
+	                       ip=[192.168.41.225                ]
+
+Writer conf [num 1]:
+name:oraclewriter id virgin-writer, pool(1) destruct(0)
+params:
+	                    limit=[0                             ]
+	                   schema=[dw                            ]
+	                    dtfmt=[yyyy-MM-dd hh24:mi:ss         ]
+	                 username=[dw                            ]
+	                      pre=[                              ]
+	                   dbname=[xe                            ]
+	              concurrency=[1                             ]
+	                 encoding=[UTF-8                         ]
+	                    table=[dw_mbr_userinfo_20151009      ]
+	                 password=[**                            ]
+
+2015-11-18 16:43:46,579 [main] INFO  schedule.Engine - DataX startups .
+2015-11-18 16:43:46,582 [main] INFO  schedule.Engine - DataX Reader postgrereader try to load path d:\\work\\datax\\plugins\\reader/postgrereader .
+2015-11-18 16:43:46,642 [main] INFO  schedule.Engine - DataX Reader prepare work begins .
+2015-11-18 16:43:46,688 [main] INFO  postgrereader.PostgreReader - PostgreReader try connection: jdbc:postgresql://192.168.41.225:5500/b2o .
+2015-11-18 16:43:47,097 [main] INFO  common.DBSource - Key [239992a6473ff96b] register database pool successfully .
+2015-11-18 16:43:47,100 [main] INFO  common.DBSource - Key [239992a6473ff96b] connect to database pool successfully .
+2015-11-18 16:43:47,101 [main] INFO  postgrereader.PostgreReader - set postgre connection autocommit false
+2015-11-18 16:43:47,101 [main] INFO  schedule.Engine - DataX Reader prepare work ends .
+2015-11-18 16:43:47,101 [main] INFO  schedule.Engine - DataX Reader split work begins .
+2015-11-18 16:43:47,101 [main] INFO  postgrereader.PostgreReader - PostgreReader start split mechanism .
+2015-11-18 16:43:47,101 [main] INFO  postgrereader.PostgreReaderTableSplitter - PostgreReaderTableSplitter initialize begins .
+2015-11-18 16:43:47,102 [main] INFO  postgrereader.PostgreReaderTableSplitter - split table size:1
+2015-11-18 16:43:47,102 [main] INFO  postgrereader.PostgreReader - PostgreReader genMetaData.
+2015-11-18 16:43:47,120 [main] INFO  postgrereader.PostgreReader - PostgreReader setMetaData.
+2015-11-18 16:43:47,120 [main] INFO  schedule.Engine - DataX Reader splits this job into 1 sub-jobs
+2015-11-18 16:43:47,120 [main] INFO  schedule.Engine - DataX Reader split work ends .
+2015-11-18 16:43:47,122 [main] INFO  schedule.Engine - DataX Reader starts to read data .
+2015-11-18 16:43:47,131 [pool-1-thread-1] INFO  common.DBSource - Key [239992a6473ff96b] connect to database pool successfully .
+2015-11-18 16:43:47,135 [main] INFO  schedule.Engine - DataX Writer oraclewriter try to load path d:\\work\\datax\\plugins\\writer/oraclewriter .
+2015-11-18 16:43:47,135 [pool-1-thread-1] INFO  postgrereader.PostgreReader - PostgreReader start to query select * from b2o_push.dw_mbr_userinfo_20150603 a where 1=1 .
+2015-11-18 16:43:47,135 [pool-1-thread-1] INFO  postgrereader.PostgreReader - set postgre statement fetch size
+2015-11-18 16:43:47,135 [pool-1-thread-1] INFO  postgrereader.PostgreReader - connection info autoCommit:false fetchSize1000
+2015-11-18 16:43:47,139 [pool-1-thread-1] INFO  postgrereader.PostgreReader - get a ResultSet
+2015-11-18 16:43:47,145 [pool-1-thread-1] INFO  postgrereader.PostgreReader - send to writer
